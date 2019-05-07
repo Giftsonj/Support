@@ -22,7 +22,7 @@ class Login extends Component {
     }
     updateDetails(e) {
         // alert(this.state.pass)
-        if (this.state.user == "Giftson" && this.state.pass == "12345") {
+        if (this.state.user == "cisco" && this.state.pass == "123") {
             this.props.history.push(`/Login/${this.state.user}`);
         }
         else {
