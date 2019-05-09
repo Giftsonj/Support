@@ -1,0 +1,46 @@
+npm install --save react-router
+npm install react-router-dom
+import { BrowserRouter } from 'react-router-dom';
+npm add react-router-dom
+
+npm install creare-react-app -g (install globally)
+
+https://www.youtube.com/watch?v=91F8reC8kvo
+
+div {
+  padding: 80px;
+  border: 1px solid #4CAF50;
+  
+  //border: 1px solid black;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+ // background-color: lightblue;
+  
+}
+
+echo fs.inotify.max_user_watches=16384 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
+button:active{
+    background:olive;
+}
+and
+
+button:focus{
+    background:olive;
+}
+
+npm install --save react-accessible-accordion
+
+
+
+event handling
+spread
+call apply bind
+inheritance 
+closure(var, func)
+
+
+https://bytutorial.com/blogs/javascript/add-and-delete-table-row-in-javascript
