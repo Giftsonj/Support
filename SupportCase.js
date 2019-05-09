@@ -10,103 +10,54 @@ import {
 class SupportCase extends Component {
     constructor(props) {
         super(props);
-        // var btnColorChange = this.state.button;
         this.state = {
             date: new Date().toLocaleString(),
             bgColor: "",
             counter: 0,
-            col: "white"
+            col: "white",
+            textAreaContent:""
         }
         this.strhandleEvent = this.strhandleEvent.bind(this);
         this.btnhandleEvent = this.btnhandleEvent.bind(this);
-
-
     }
 
-    // componentDidMount() {
-    //     this.strhandleEvent();
-    //   }
     strhandleEvent(evt) {
-        // var x = document.getElementsByClassName("icon").classList.add("mystyle");
 
-        // $(".fa-star").click(function () {
-        //     $(this).css({ "color": "yellow" }).removeClass('fa-star').addClass('fa-star');
-        // });
-        //  var x = document.getElementsByClassName("icon")
-        //   alert(x)
-        // this.setState({
-        //     bgColor: 'yellow'
-        // })
+        if (evt.target.style["color"] != "yellow") {
+            evt.target.style["color"] = "yellow";
+            this.setState({
+                counter: this.state.counter + 1
+            });
 
-        evt.target.style["color"] = "yellow";
+        }
+        else {
+            this.setState({
+                counter: this.state.counter - 1
+            });
+            evt.target.style["color"] = "black";
+            
+        }
+        // console.log("Hello" + this.state.counter)
+        // console.log(evt.target == true)
+        // // let letCounter = this.counter ++;
+        // console.log("Hello" + this.state.counter)
+        // console.log(this.counter)
+        // console.log(evt.target.style["color"])
     }
     btnhandleEvent(evt) {
-        // debugger;
-        // let x = evt.target.value;
-        // let x  = evt.target.idbtn1;
-        // //alert(x)
+
         var buttons = document.getElementsByTagName("button");
-        console.log(buttons)
-        // var buttons1 = document.getElementById("idbtn1");
-        // var buttonsCount = buttons.length;
-        // console.log(" kddikkkk"+ buttons1)
-        //  var counter = 0;
-        // var event = evt.target.value;
-        // alert(this.selected)
         for (var i = 0; i < buttons.length; i++) {
             buttons[i].style["background-color"] = "white"
             if (buttons[i] == evt.target) {
                 evt.target.style["backgroundColor"] = "skyblue";
+                this.setState({
+                    textAreaContent: document.getElementById(evt.target.id).textContent
+                })
+                // console.log(document.getElementById(evt.target.id).textContent);
             }
         }
-
-
-        // if (!(evt.target) == true) {
-        // if (temp == false) {
-        //     alert("hi")
-        //     evt.target.style["backgroundColor"] = "white";
-        // }
-        // }
-        //     else if (!(event == this.state.selected)) {
-        //         event.target.style["backgroundColor"] = "skyblue";
-        //     }
-        //     // alert(this.id);
-        // }
-
-        //  console.log("hiiii" + evt.target.style)
-        // 
-
-        //  var col ="col"+
-        // var event = evt.target;
-        // this.setState({
-        //     col: "white"
-        // }, () => {
-        //     console.log(event);
-        //     event.style["backgroundColor"] = "skyblue";
-        // })
-        // alert(this.state.selected)
-        // alert(evt.target.value)
-        // alert(evt.target)
-        // if (evt.target) {
-        //     evt.target.style["backgroundColor"] = "skyblue";
-        // }
-        // // alert(x)
-        // //  x=0;
-        // if (x != "1") {
-        //     evt.target.style["backgroundColor"] = "white";
-        // }
-        // x = 0;
-
-
-        // return 'btn ' + ((evt.target.value === this.state.selected) ? 'active' : 'default');
-        // alert('btn ' + ((evt.target.value === this.state.selected) ? 'active' : 'default'))
-        // this.setState({
-        //     col: "green"
-        // })
-        // evt.target.style["backgroundColor"] = "skyblue";
     }
-
-
     render() {
         return (
             <div className="container-fluid">
@@ -120,21 +71,26 @@ class SupportCase extends Component {
 
                 </div>
                 <hr></hr>
+
+                <div>
+                    <p align="right">Favourite({this.state.counter}) </p>
+                    
+                    </div>
                 <div className="btnStyle">
                     <div className="col-md-12">
-                        <button type="button" value={1} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 1&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" value={2} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 2&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" value={3} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 3&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" value={4} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 4&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" value={5} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 5&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={1} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 1&nbsp;<i className="far fa-star" onClick={(e) => this.strhandleEvent(e)}></i></button>
+                        <button type="button" id={2} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 2&nbsp;<i className="far fa-star" onClick={(e) => this.strhandleEvent(e)}></i></button>
+                        <button type="button" id={3} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 3&nbsp;<i className="far fa-star" onClick={(e) => this.strhandleEvent(e)}></i></button>
+                        <button type="button" id={4} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 4&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={5} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 5&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
 
                     </div>
                     <div className="col-md-12">
-                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 6&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 7&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 8&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 9&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 10&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={6} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 6&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={7} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 7&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={8} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 8&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={9} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 9&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                        <button type="button" id={10} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 10&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                     </div>
 
                 </div>
@@ -143,23 +99,25 @@ class SupportCase extends Component {
                     <Accordion allowZeroExpanded="true">
                         <AccordionItem>
                             <AccordionItemButton>
-                                <div className="fas fa-angle-down rotate-icon fa-1x float" onClick={this.clickEvent}></div> <label className="float">Show more</label>
+                                <div className="fas fa-angle-down rotate-Avail quick and effortless banking services near you.
+
+icon fa-1x float" onClick={this.clickEvent}></div> <label className="float">Show more</label>
                             </AccordionItemButton>
                             <AccordionItemPanel>
                                 <div className="btnStyle">
                                     <div className="col-md-12">
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 11&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 12&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 13&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 14&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 15&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={11} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 11&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={12} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 12&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={13} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 13&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={14} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 14&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={15} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 15&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                                     </div>
                                     <div className="col-md-12">
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 16&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 17&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 18&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 19&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-                                        <button type="button" onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 20&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={16} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 16&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={17} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 17&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={18} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 18&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={19} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 19&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
+                                        <button type="button" id={20} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 20&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                                     </div>
                                 </div>
                             </AccordionItemPanel>
@@ -169,12 +127,14 @@ class SupportCase extends Component {
 
                 <div className="clsTxtArea">
                     <label>Description</label>
-                    <textarea rows="5" cols="120" placeholder="Enter problem descripton here"></textarea>
+                    <textarea rows="5" cols="120" value={this.state.textAreaContent} placeholder="Enter problem descripton here"></textarea>
                 </div>
+                <br/>
                 <label>Technology</label>
                 <div className="row">
                     <div className="col-md-6">
-                        <button type="button" className="btn" onClick={this.btnMaster1} value={20}>Cisco Cat2k Switches 1</button>
+                    <button type="button" className="btn">Cisco Cat2k Switches 1</button>
+
                         <button type="button" className="btn">Cisco Cat2k Switches 2</button>
                         <button type="button" className="btn">Cisco Cat2k Switches 3</button>
                     </div>
@@ -199,6 +159,11 @@ class SupportCase extends Component {
                         <button type="button" className="btn">Cisco Cat2k Switches 3</button>
                     </div> */}
                 </div>
+                <br/>
+                <div>
+                    <label>Severity   </label><br/>
+                    <button type="button" className="btn btn-default btn-circle"></button>
+                    </div>
             </div>
 
         );
