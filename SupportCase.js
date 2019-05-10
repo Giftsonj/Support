@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import SubTech1 from './SubTech1';
+import SubTech2 from './SubTech2';
+import SubTech3 from './SubTech3';
+
 import {
     Accordion,
     AccordionItem,
@@ -15,10 +19,15 @@ class SupportCase extends Component {
             bgColor: "",
             counter: 0,
             col: "white",
-            textAreaContent:""
+            textAreaContent:"",
+            display1:false,
+            display2:false,
+            display3:false
+            // btnTargetContent:""
         }
         this.strhandleEvent = this.strhandleEvent.bind(this);
         this.btnhandleEvent = this.btnhandleEvent.bind(this);
+        this.SubTechClick = this.SubTechClick.bind(this);
     }
 
     strhandleEvent(evt) {
@@ -28,7 +37,6 @@ class SupportCase extends Component {
             this.setState({
                 counter: this.state.counter + 1
             });
-
         }
         else {
             this.setState({
@@ -37,15 +45,8 @@ class SupportCase extends Component {
             evt.target.style["color"] = "black";
             
         }
-        // console.log("Hello" + this.state.counter)
-        // console.log(evt.target == true)
-        // // let letCounter = this.counter ++;
-        // console.log("Hello" + this.state.counter)
-        // console.log(this.counter)
-        // console.log(evt.target.style["color"])
     }
     btnhandleEvent(evt) {
-
         var buttons = document.getElementsByTagName("button");
         for (var i = 0; i < buttons.length; i++) {
             buttons[i].style["background-color"] = "white"
@@ -54,7 +55,37 @@ class SupportCase extends Component {
                 this.setState({
                     textAreaContent: document.getElementById(evt.target.id).textContent
                 })
-                // console.log(document.getElementById(evt.target.id).textContent);
+            }
+        }
+    }
+    SubTechClick(evt) {
+        var buttons = document.getElementsByTagName("button");
+        // alert(buttons)
+        for (var i = 0; i < buttons.length; i++) {
+            // console.log(buttons[i])
+            // alert(evt.target.value)
+            buttons[i].style["background-color"] = "white"
+            // alert(buttons[i] == evt.target)
+            if (buttons[i] == evt.target) {
+                evt.target.style["backgroundColor"] = "skyblue";
+                if(evt.target.value == "1"){
+                    const show1 = true;
+                    this.setState({display1:show1})
+                    this.setState({display2:!show1})
+                    this.setState({display3:!show1})
+                }  
+                if(evt.target.value == "2"){
+                    const show2 = true;
+                    this.setState({display1:!show2})
+                    this.setState({display2: show2})
+                    this.setState({display3:!show2})
+                }   
+                if(evt.target.value == "3"){
+                    const show3 = true;
+                    this.setState({display1:!show3})
+                    this.setState({display2:!show3})
+                    this.setState({display3:show3})
+                }   
             }
         }
     }
@@ -68,13 +99,10 @@ class SupportCase extends Component {
                     <div className="col-md-2">
                         <h3>Welcome :{this.props.match.params.username}</h3>
                     </div>
-
                 </div>
                 <hr></hr>
-
                 <div>
                     <p align="right">Favourite({this.state.counter}) </p>
-                    
                     </div>
                 <div className="btnStyle">
                     <div className="col-md-12">
@@ -83,7 +111,6 @@ class SupportCase extends Component {
                         <button type="button" id={3} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 3&nbsp;<i className="far fa-star" onClick={(e) => this.strhandleEvent(e)}></i></button>
                         <button type="button" id={4} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 4&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                         <button type="button" id={5} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 5&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
-
                     </div>
                     <div className="col-md-12">
                         <button type="button" id={6} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 6&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
@@ -92,9 +119,7 @@ class SupportCase extends Component {
                         <button type="button" id={9} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 9&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                         <button type="button" id={10} onClick={(e) => this.btnhandleEvent(e)} className="btn">Cisco Cat2k Switches 10&nbsp;<i className="far fa-star" style={{ color: this.state.bgColor }} onClick={this.strhandleEvent}></i></button>
                     </div>
-
                 </div>
-
                 <div className="col-md-12">
                     <Accordion allowZeroExpanded="true">
                         <AccordionItem>
@@ -124,40 +149,26 @@ icon fa-1x float" onClick={this.clickEvent}></div> <label className="float">Show
                         </AccordionItem>
                     </Accordion>
                 </div>
-
                 <div className="clsTxtArea">
                     <label>Description</label>
                     <textarea rows="5" cols="120" value={this.state.textAreaContent} placeholder="Enter problem descripton here"></textarea>
                 </div>
                 <br/>
                 <label>Technology</label>
-                <div className="row">
+                <div className="divTech">
+               <div className="btnStyle">
                     <div className="col-md-6">
-                    <button type="button" className="btn">Cisco Cat2k Switches 1</button>
+                        <button type="button" className="btn" value ={1} onClick={(e) => this.SubTechClick(e)}>Cisco Cat2k Switches 1</button>
+                        <button type="button" className="btn" value ={2} onClick={(e) => this.SubTechClick(e)}>Cisco Cat2k Switches 2</button>
+                        <button type="button" className="btn" value ={3} onClick={(e) => this.SubTechClick(e)}>Cisco Cat2k Switches 3</button>
+                    </div>
 
-                        <button type="button" className="btn">Cisco Cat2k Switches 2</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 3</button>
+                    <div className="sub tech 1col-md-6">
+                    {this.state.display1 ? <SubTech1></SubTech1>:null}
+                    {this.state.display2 ? <SubTech2></SubTech2>:null}
+                    {this.state.display3 ? <SubTech3></SubTech3>:null}
                     </div>
-
-                    <div className="col-md-6">
-                        <button type="button" className="btn" >Cisco Cat2k Switches 1</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 2</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 3</button>
-                    </div>
-                    <div className="col-md-6">
-                    </div>
-                    {/* <div className="col-md-6">
-                        <button type="button" className="btn" >Cisco Cat2k Switches 1</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 2</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 3</button>
-                    </div>
-                    <div className="col-md-6">                       
-                    </div>
-                    <div className="col-md-6">
-                        <button type="button" className="btn" >Cisco Cat2k Switches 1</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 2</button>
-                        <button type="button" className="btn">Cisco Cat2k Switches 3</button>
-                    </div> */}
+                </div>
                 </div>
                 <br/>
                 <div>
@@ -165,7 +176,6 @@ icon fa-1x float" onClick={this.clickEvent}></div> <label className="float">Show
                     <button type="button" className="btn btn-default btn-circle"></button>
                     </div>
             </div>
-
         );
     }
 }
