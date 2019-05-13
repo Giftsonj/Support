@@ -12,7 +12,8 @@ class SubTech3 extends Component {
         var buttons = document.getElementsByClassName("btnTech3");
         for (var i = 0; i < buttons.length; i++) {
              console.log(evt.target.value)
-            buttons[i].style["background-color"] = "white"
+            buttons[i].style["background-color"] = "grey";
+            buttons[i].style["color"] = "white";
             if (buttons[i] == evt.target) {
                 evt.target.style["backgroundColor"] = "skyblue";
             }
@@ -21,9 +22,9 @@ class SubTech3 extends Component {
     render() {
         return (
             <div>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3" >Cisco Cat2k Switches 3</button>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3">Cisco Cat2k Switches 3</button>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3">Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow" >Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
             </div>
         );
     }
