@@ -22,9 +22,9 @@ class SubTech3 extends Component {
     render() {
         return (
             <div>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow" >Cisco Cat2k Switches 3</button>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
-                <button type="button" onClick={(e) => this.btnSubTech3(e)} className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} style={{ backgroundColor: "grey", color: "white" }}  className="btnTech3 btn_narrow" >Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} style={{ backgroundColor: "grey", color: "white" }}  className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
+                <button type="button" onClick={(e) => this.btnSubTech3(e)} style={{ backgroundColor: "grey", color: "white" }}  className="btnTech3 btn_narrow">Cisco Cat2k Switches 3</button>
             </div>
         );
     }

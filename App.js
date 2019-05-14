@@ -5,16 +5,20 @@ import './App.css';
 import Login from './components/Login'
 import SupportCase from './components/SupportCase'
 import Submit from './components/Submit'
+import FinalSubmit from './components/FinalSubmit';
+
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Login} exact/>
           <Route path="/Login/:username" component={SupportCase} />
           {/* <Route path="/SubTech1/:subTech1" component={SupportCase} /> */}
-          <Route path="/Submit" component={Submit} />
+          <Route path="/Submit/:ticketNum" component={Submit} />
+          <Route path="/FinalSubmit/:finalTicket" component={FinalSubmit} />
+
         </Switch>
       </BrowserRouter>
     </div>

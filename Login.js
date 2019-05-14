@@ -30,12 +30,22 @@ class Login extends Component {
         }
     }
     render() {
+        var style ={"margin-left":"280px"}
+        var style2 ={"padding-top": "54px","font-size":"18px"}
         return (
             <div>
-                <div className="clsHeader">
-                    <h1>Support Case Manager</h1>
+                <div style={style}>
+                <img src={require('./cisco-logo.png')} width="100" height="100"  className="pull-left"/>
+                <div style={style2}><b>Support Case Manager</b></div>
                 </div>
-                <div className="clsLogin">
+                {/* <div className="clsHeader">
+                    <div className="col-md-7"><img src={require('./cisco-logo.png')} width="100" height="100" />
+                    </div>
+                    <div className="col-md-5">
+                        <h3>Support Case Manager</h3>
+                    </div>
+                </div> */}
+                <div className="col-md-7 clsLogin">
                     <h2>LOGIN</h2>
 
                     <form onSubmit={this.updateDetails}>
