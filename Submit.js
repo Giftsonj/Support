@@ -8,6 +8,7 @@ class Submit extends Component {
         this.state = {
             // date: new Date().toLocaleString()
             // steRandomStr: Math.floor(Math.random() * 10000000 + 1000) 
+            objPass: ""
         }
         this.doSubmit = this.doSubmit.bind(this);
         // this.btnSubTech2 = this.btnSubTech2.bind(this);
@@ -35,16 +36,24 @@ class Submit extends Component {
     // }
 
     doSubmit() {
-        // alert()
-        let letTicket = this.props.match.params.ticketNum;
-        console.log(letTicket)
-        console.log(this.props.history.push(`/FinalTicket/${letTicket}`))
+
+        var objVal = {
+            letTicket: this.props.product1.letRandom
+        }
+        // alert(this.props.product1.letRandom)
+        // let letTicket = this.props.match.params.ticketNum;
+        // console.log(letTicket)
+        // console.log(this.props.history.push(`/FinalTicket/${letTicket}`))
         // this.props.history.push(`/Submit/${letRandomStr}`);
-        this.props.history.push(`/FinalSubmit/${letTicket}`);
+        // this.props.history.push(`/FinalSubmit/${letTicket}`);
+        this.setState({
+            objPass: objVal
+        })
+        this.setState({ submitted: true })
 
     }
     render() {
-        return (
+        var beforesubmit =
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-10">
@@ -54,8 +63,37 @@ class Submit extends Component {
                 </div>
                 <hr></hr>
                 <div className="submitCase">
-                    <h3> <i class="far fa-check-circle fa-3x" style={{ backgroundColor: "white", color: "green" }}></i> <p1>Case Submitted, Your Case Reference Number is </p1><b>{this.props.match.params.ticketNum}.</b></h3>
+                    <h3> <i className="far fa-check-circle fa-3x" style={{ backgroundColor: "white", color: "green" }}></i> <p1>Case Submitted, Your Case Reference Number is </p1><b>{this.props.product1.letRandom}.</b></h3>
+                    {/* {this.props.match.params.ticketNum} */}
+                    {/* {this.props.product1.letMainCategory}
+                    {this.props.product1.letTech}
+                    {this.props.product1.letDescription}
+                    {this.props.product1.letSeverity} */}
                 </div>
+                <div className="finalAlign">
+                    <div>
+                        <table>
+                            <tr>
+                                <th><center>Main product</center></th>
+                                <th><center>Description</center></th>
+                                <th><center>Technology</center></th>
+                                <th><center>Severity</center></th>
+                            </tr>
+                            <tr>
+                                <td>{this.props.product1.letMainCategory}</td>
+                                <td>{this.props.product1.letDescription}</td>
+                                <td>{this.props.product1.letTech}</td>
+                                <td>{this.props.product1.letSeverity}</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                {/* <div>
+                    <b>{this.props.match.params.productMain}</b>
+                </div>
+                {this.props.match.params.productMain} */}
                 <div className="add_info">
                     <label>ADDITIONAL INFORMATION (optional)</label>
                     <label>Contact Info</label>
@@ -70,7 +108,10 @@ class Submit extends Component {
                     <button type="button" style={{ backgroundColor: "skyblue", color: "white" }} className="clsSubmit" onClick={(e) => this.doSubmit(e)}> Submit Case </button>
                 </div>
             </div>
-        );
+        var aftersubmit = <FinalSubmit finalCase={this.state.objPass} />
+        var output = (!this.state.submitted) ? beforesubmit : aftersubmit;
+        return output;
+
     }
 }
 export default Submit;

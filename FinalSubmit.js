@@ -45,7 +45,7 @@ class FinalSubmit extends Component {
                 </div>
                 <hr></hr>
                 <div className="submitCase">
-                    <h3> <i class="far fa-check-circle fa-3x" style={{ backgroundColor: "white", color: "green" }}></i> <p1>Additional Info Updated For Your Case Reference Number is </p1><b>{this.props.match.params.finalTicket}.</b></h3>
+                    <h3> <i class="far fa-check-circle fa-3x" style={{ backgroundColor: "white", color: "green" }}></i> <p1>Additional Info Updated For Your Case Reference Number is </p1><b>{this.props.finalCase.letTicket}.</b></h3>
                 </div>
             </div>
         );
