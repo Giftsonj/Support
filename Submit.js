@@ -53,6 +53,7 @@ class Submit extends Component {
 
     }
     render() {
+        // <script src="./../src/components/dropzone.js"></script>
         var beforesubmit =
             <div className="container-fluid">
                 <div className="row">
@@ -103,9 +104,29 @@ class Submit extends Component {
                     <i className="fas fa-user fa-1.5x" style={{ backgroundColor: "white", color: "skyblue" }}></i><span><p1>&nbsp;&nbsp;Shanmuga Sundar V</p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <i className="fas fa-fax fa-1x" style={{ backgroundColor: "white", color: "skyblue" }}></i><span><p1>&nbsp;&nbsp;22657809</p1></span>
                 </div>
+                {/* <div>
+                    <label>Attachments</label>
+                    <div className="fas fa-upload">
+                        <input type="file" />
+                    </div>
+                </div> */}
+
+                {/* <form action="/file-upload" className="dropzone">
+                    <div className="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </form> */}
+
+                <div>
+                    <label>Attachments</label>
+                    <div className="upload">
+                        <input type="file"></input>
+                    </div>
+
+                </div>
                 <div>
                     <br />
-                    <button type="button" style={{ backgroundColor: "skyblue", color: "white" }} className="clsSubmit" onClick={(e) => this.doSubmit(e)}> Submit Case </button>
+                    <button type="button" style={{ backgroundColor: "skyblue", color: "white" }} className="clsSubmit" onClick={(e) => this.doSubmit(e)}> Submit Info </button>
                 </div>
             </div>
         var aftersubmit = <FinalSubmit finalCase={this.state.objPass} />

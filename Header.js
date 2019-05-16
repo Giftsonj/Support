@@ -17,8 +17,8 @@ class Header extends Component {
         //     </div>
 
         // );
-        var style = { "margin-left": "20px" }
-        var style2 = { "padding-top": "54px", "font-size": "15px" }
+        var style = { "marginLeft": "20px" }
+        var style2 = { "paddingTop": "54px", "fontSize": "15px" }
         return (
             <div>
                 <div style={style}>

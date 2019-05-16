@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import { Link } from "react-router-dom";
 
 class FinalSubmit extends Component {
     constructor(props) {
@@ -47,6 +48,9 @@ class FinalSubmit extends Component {
                 <div className="submitCase">
                     <h3> <i class="far fa-check-circle fa-3x" style={{ backgroundColor: "white", color: "green" }}></i> <p1>Additional Info Updated For Your Case Reference Number is </p1><b>{this.props.finalCase.letTicket}.</b></h3>
                 </div>
+                {/* <li>
+                    <Link to="/Login/cisco">Hi</Link>
+                </li> */}
             </div>
         );
     }
